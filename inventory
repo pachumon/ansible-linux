@@ -1,0 +1,13 @@
+[webservers]
+10.0.0.6
+
+[dbservers]
+10.0.0.7
+
+[linux:children]
+webservers
+dbservers
+
+[linux:vars]
+ansible_user="adminuser"
+ansible_connection=ssh
