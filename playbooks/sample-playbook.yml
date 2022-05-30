@@ -5,7 +5,7 @@
   tasks:
     - name: install appache software
       yum:
-        name: "{{software-list}}"
+        name: "{{software_list}}"
         state: latest
 
     - name: install nmap-ncat software
