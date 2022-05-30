@@ -1,0 +1,17 @@
+--- #sample playbook to verify condition
+- hosts: linux
+  become: true
+
+  vars:
+    target_file: /home/adminuser/samplefile
+
+  tasks:
+
+    - name: gather file information
+      stat:
+        path: "{{ target_file }}"
+      register: fileinfo
+      
+    - name: rename file when found
+      debug:
+        var: fileinfo
