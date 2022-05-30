@@ -1,10 +1,11 @@
 --- # sample for using tags for partial playbook execution
 
 - hosts: linux
-  become: true
+  # become: true
 
   tasks:
     - name: install httpd
+      become: true
       yum:
         name: httpd
         state: latest
