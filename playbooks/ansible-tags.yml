@@ -1,0 +1,28 @@
+--- # sample for using tags for partial playbook execution
+
+- hosts: linux
+  become: true
+
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: latest
+      tags: 
+        - software
+
+    - name: add line to test file
+      lineinfile:
+        path: /home/adminuser/tag-test.txt
+        create: yes
+        line: "tag called"
+      tags: 
+        - files
+        - config
+
+    - name: copy tag file
+      copy:
+        src: /home/adminuser/tag-test.txt
+        dest: /tmp/copied.txt
+      tags: 
+        - config
