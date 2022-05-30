@@ -18,4 +18,4 @@
 
     - name: rename file conditionally
       command: mv "{{ target_file }}" /home/adminuser/renamedfile
-      when: fileinfo.stst.exists
+      when: fileinfo.stat.exists
