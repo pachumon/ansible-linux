@@ -5,7 +5,7 @@
   tasks:
     - name: install elinks software
       yum:
-        name: elinks
+        name: httpd
         state: latest
 
     - name: install nmap-ncat
