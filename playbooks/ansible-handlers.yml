@@ -10,12 +10,13 @@
       yum:
         name: httpd
         state: latest
-
-    - name: update configuration
-      template:
-        src: /home/adminuser/ansible-linux/playbooks/templates/httpd.conf.j2
-        dest: /etc/httpd/conf/httpd.conf
       notify: httpd service
+
+    # - name: update configuration
+    #   template:
+    #     src: /home/adminuser/ansible-linux/playbooks/templates/httpd.conf.j2
+    #     dest: /etc/httpd/conf/httpd.conf
+    #   notify: httpd service
 
   handlers:
     - name: httpd service
