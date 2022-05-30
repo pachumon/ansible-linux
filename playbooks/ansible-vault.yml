@@ -1,0 +1,14 @@
+--- #playinh with ansible vault
+- hosts: linux
+  become: true
+
+  vars_files:
+    - "../secretfile"
+
+  tasks:
+    - name: add secret text to open.txt
+      lineinfile:
+        path: /home/adminuser/open.txt
+        create: true
+        line: "{{ password }}"
+      no_log: true
