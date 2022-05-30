@@ -3,12 +3,12 @@
   become: true
 
   tasks:
-    - name: install elinks software
+    - name: install appache software
       yum:
-        name: httpd
+        name: "{{software-list}}"
         state: latest
 
-    - name: install nmap-ncat
+    - name: install nmap-ncat software
       yum:
         name: nmap-ncat
         state: latest
