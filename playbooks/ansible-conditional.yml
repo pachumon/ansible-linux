@@ -14,4 +14,8 @@
       
     - name: rename file when found
       debug:
-        var: fileinfo
+        var: fileinfo.stat
+
+    - name: rename file conditionally
+      command: mv "{{ target_file }}" /home/adminuser/renamedfile
+      when: fileinfo.stst.exists
