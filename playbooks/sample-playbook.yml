@@ -1,0 +1,14 @@
+---
+- hosts: linux
+  become: true
+
+  tasks:
+    - name: install elinks software
+      yum:
+        name: elinks
+        state: latest
+
+    - name: install nmap-ncat
+      yum:
+        name: nmap-ncat
+        state: latest
