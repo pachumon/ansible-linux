@@ -13,3 +13,17 @@
         - httpd
 
 
+- hosts: dbservers
+  become: true
+  vars:
+    softwares:
+      - git
+      - python3-pip
+      - httpd
+
+  tasks:
+    - name: install softwares from variable
+      yum:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ softwares }}"
