@@ -1,0 +1,13 @@
+--- #handling errors in ansible
+- hosts: linux
+  become: true
+  tasks:
+    - name: install software
+      yum:
+        name: broken
+        state: latest
+    
+    - name: run utility
+      yum:
+        name: https
+        state: latest
