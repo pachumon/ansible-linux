@@ -6,6 +6,7 @@
       yum:
         name: broken
         state: latest
+      ignore_errors: true
     
     - name: run utility
       yum:
