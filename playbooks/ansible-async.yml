@@ -1,0 +1,8 @@
+--- #sample for using async in ansible for long running tasks
+- hosts: linux
+  become: true
+  tasks:
+    - name: run sleep.sh file
+      command: ../scripts/sleep.sh
+      async: 50
+      poll: 10
