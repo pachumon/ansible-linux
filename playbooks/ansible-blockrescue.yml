@@ -1,0 +1,19 @@
+--- #using block and rescue for error handling
+- hosts: linux
+  become: true
+  vars:
+    target_service: httpd
+  
+  tasks:
+    - name: install software
+      block:
+        - service:
+            name: httpd
+            state: started
+          register: service_status
+      rescue:
+        - debug:
+            var: service_status
+      always:
+        - debug:
+            msg: 'tried to ensure service was started'
