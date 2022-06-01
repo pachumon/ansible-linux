@@ -2,7 +2,11 @@
 - hosts: linux
   become: true
   tasks:
+    - name: copy sleep.sh file
+      copy:
+        src: ../scripts/sleep.sh
+        dest: //home/adminuser/sleep.sh
     - name: run sleep.sh file
-      command: ../scripts/sleep.sh
+      command: /home/adminuser/sleep.sh
       async: 50
       poll: 10
