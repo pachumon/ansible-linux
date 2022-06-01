@@ -10,5 +10,5 @@
     
     - name: run utility
       yum:
-        name: https
+        name: httpd
         state: latest
