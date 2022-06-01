@@ -1,0 +1,13 @@
+--- # example for delegate task
+- hosts: linux
+  become: true
+  tasks:
+    - name: install software 
+      yum:
+        name: git
+        state: present
+      delegate_to: webserver
+    - name: install software
+      yum:
+        name: httpd
+        state: present
