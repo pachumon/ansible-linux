@@ -6,6 +6,8 @@
       copy:
         src: ../scripts/sleep.sh
         dest: //home/adminuser/sleep.sh
+        owner: adminuser
+        mode: 700
     - name: run sleep.sh file
       command: /home/adminuser/sleep.sh
       async: 50
