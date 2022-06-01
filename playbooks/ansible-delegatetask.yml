@@ -6,7 +6,7 @@
       yum:
         name: git
         state: present
-      delegate_to: webserver
+      delegate_to: webservers
     - name: install software
       yum:
         name: httpd
