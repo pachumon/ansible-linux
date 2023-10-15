@@ -1,6 +1,7 @@
 ---
 - name: copy module test
   hosts: linux
+  gather_facts: false
 
   tasks:
     - copy:
