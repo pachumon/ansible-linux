@@ -15,7 +15,7 @@
   tags: nginx
   become: true
   tasks:
-    - diff:true
+    - diff: true
       yum:
         name: nginx
         state: latest
