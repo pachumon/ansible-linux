@@ -1,0 +1,8 @@
+---
+- name: copy module test
+  hosts: linux
+
+  tasks:
+  - copy:
+      dest:  hello
+      content:  world
