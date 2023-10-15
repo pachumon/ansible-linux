@@ -11,6 +11,10 @@
     - command:
         cmd: date
 
+    - debug:
+        #msg: "trying to debug"
+        var: ansible_facts
+
 - name: install nginx
   hosts: webservers
   tags: nginx
