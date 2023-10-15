@@ -15,6 +15,10 @@
   tags: nginx
   become: true
   tasks:
+    - debug:
+      msg: "trying to debug"
+      var: ansible_distribution
+
     - diff: true
       yum:
         name: nginx
