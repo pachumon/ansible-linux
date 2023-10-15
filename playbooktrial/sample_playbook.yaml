@@ -20,6 +20,7 @@
         var: ansible_distribution
 
     - diff: true
+      when: ansible_distribution == "RedHat"
       yum:
         name: nginx
         state: latest
