@@ -1,7 +1,10 @@
 ---
 - name: copy module test
   hosts: linux
-  gather_facts: false
+  #gather_facts: false
+  gather_subset:
+    - '!min'
+    - processor
 
   tasks:
     - copy:
