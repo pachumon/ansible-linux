@@ -6,3 +6,6 @@
     - copy:
         dest: hello
         content: world
+
+    - command:
+      cmd: date
