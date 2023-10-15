@@ -16,7 +16,7 @@
   become: true
   tasks:
     - debug:
-        msg: "trying to debug"
+        #msg: "trying to debug"
         var: ansible_distribution
 
     - diff: true
