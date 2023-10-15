@@ -10,8 +10,11 @@
     - command:
         cmd: date
 
-- name: controller requirements
-  hosts: localhost
+- name: install nginx
+  hosts: webservers
+  tags: nginx
+  diff: true
   tasks:
-    - pip:
-      name: ansible-lint
+    - yum:
+        name: nginx
+        state: latest
