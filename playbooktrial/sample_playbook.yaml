@@ -8,4 +8,11 @@
         content: world
 
     - command:
-      cmd: date
+        cmd: date
+
+
+- name: controller requirements
+  hosts: localhost
+  tasks:
+  - pip:
+    name: ansible-lint
