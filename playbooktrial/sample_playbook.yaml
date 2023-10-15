@@ -13,9 +13,9 @@
 - name: install nginx
   hosts: webservers
   tags: nginx
-  diff: true
   become: true
   tasks:
-    - yum:
+    - diff:true
+      yum:
         name: nginx
         state: latest
