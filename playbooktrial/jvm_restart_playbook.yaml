@@ -7,7 +7,7 @@
     - name: check if specific file exist 
       become: true
       find:
-        paths: "{{ path }}"
+        paths: "{{ filepath }}"
         patterns: '*logs.log'
         recurse: no           
       register: found_files   
@@ -16,7 +16,7 @@
         var: found_files
 
     - name: Check if error text is present
-      shell: grep -q 'error' "{{path}}/serverlogs.log"
+      shell: grep -q 'error' "{{ filepath }}/{{ filename }}"
       register: grep_result
       ignore_errors: yes  
 
