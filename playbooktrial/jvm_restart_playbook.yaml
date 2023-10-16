@@ -7,3 +7,4 @@
     - name: Debug
       debug:
         var: groups
+        var: ansible_facts
