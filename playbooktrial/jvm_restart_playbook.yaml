@@ -5,8 +5,10 @@
 
   tasks:
     - name: check if specific file exist 
+
       find:
-        paths: /home/adminuser/sampledir/serverlogs.log
+        paths: /home/adminuser/sampledir
+        patterns: '*logs.log'
         recurse: no           
       register: found_files   
 
