@@ -1,0 +1,24 @@
+---
+- name: Verify if file exists and check if content is present 
+
+  tasks:
+    - name: check if specific file exist 
+      become: true
+      find:
+        paths: "{{ filepath }}"
+        patterns: '{{ filename }}'
+        recurse: no           
+      register: file_info       
+
+    - name: Check if error text is present
+      when: file_info.matched
+      shell: grep -q '{{ errortext }}' "{{ filepath }}/{{ filename }}"
+      register: grep_result
+      ignore_errors: yes  
+
+    - name: Display the result
+      debug:
+        msg: "The line is {{ 'present' if grep_result.rc == 0 else 'not present' }} in the file"
+
+    - debug:
+        var: grep_result
