@@ -15,8 +15,8 @@
     - debug:       
         var: found_files
 
-    - name: Check if error present
-      shell: grep -q 'error' /home/adminuser/sampledir/serverlogs.log
+    - name: Check if error text is present
+      shell: grep -q 'error' "{{path}}/serverlogs.log"
       register: grep_result
       ignore_errors: yes  
 
