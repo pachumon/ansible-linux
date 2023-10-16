@@ -1,9 +1,7 @@
 ---
 - name: Verify if file exists and check if content is present 
   hosts: "{{ host }}"
-  gather_facts: True
-
-
+  
   tasks:
     - name: check if specific file exist 
       become: true
