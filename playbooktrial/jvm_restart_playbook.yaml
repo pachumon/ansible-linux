@@ -1,0 +1,9 @@
+---
+- name: Verify JVM logs and restart service
+  hosts: "{{ host }}"
+  gather_facts: True
+
+  tasks:
+    - name: Debug
+      debug:
+        var: groups
