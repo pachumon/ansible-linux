@@ -8,7 +8,7 @@
       become: true
       find:
         paths: "{{ filepath }}"
-        patterns: '*logs.log'
+        patterns: '{{ filename }}'
         recurse: no           
       register: file_info 
 
