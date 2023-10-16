@@ -15,12 +15,11 @@
     - debug:       
         var: found_files
 
-    - name: check if the file contains specific error
-      lineinfile:
-        dest: /home/adminuser/sampledir/serverlogs.log
-        line: "error"
-      check_mode: yes
-      register: file_presence
+    - name: Check if error present
+      shell: grep -q 'error' /home/adminuser/sampledir/serverlogs.log
+      register: grep_result
+      ignore_errors: yes  
 
-    - debug:       
-        var: file_presence
+    - name: Display the result
+      debug:
+        msg: "The line is {{ 'present' if grep_result.rc == 0 else 'not present' }} in the file"
