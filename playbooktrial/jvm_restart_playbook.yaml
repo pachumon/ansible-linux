@@ -4,8 +4,26 @@
   gather_facts: True
 
   tasks:
-    - name: Include subtask playbook
-      import_playbook: verify_file_check_content_playbook.yaml
+    - name: check if specific file exist 
+      become: true
+      find:
+        paths: "{{ filepath }}"
+        patterns: '{{ filename }}'
+        recurse: no           
+      register: file_info       
+
+    - name: Check if error text is present
+      when: file_info.matched
+      shell: grep -q '{{ errortext }}' "{{ filepath }}/{{ filename }}"
+      register: grep_result
+      ignore_errors: yes  
+
+    - name: Display the result
+      debug:
+        msg: "The line is {{ 'present' if grep_result.rc == 0 else 'not present' }} in the file"
+
+    - debug:
+        var: grep_result
     
     - name: Run a command
       when: grep_result.rc == 0

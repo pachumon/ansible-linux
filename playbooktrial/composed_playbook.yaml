@@ -1,0 +1,14 @@
+---
+- name: Verify JVM logs and restart service
+  hosts: "{{ host }}"
+  gather_facts: True
+
+  tasks:
+    - debug:
+        msg: play1
+
+- name: Include a play after another play1
+  import_playbook: verify_file_check_content_playbook.yaml
+
+- name: Include a play after another play2
+  import_playbook: execute_command_playbook.yaml

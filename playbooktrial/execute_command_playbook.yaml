@@ -1,0 +1,7 @@
+---
+- name: Execute specific command on server
+
+  tasks:  
+    - name: Run a command
+      when: grep_result.rc == 0
+      command: echo run command here for jvm restart
