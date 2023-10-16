@@ -16,7 +16,7 @@
         var: file_info  
 
     - name: Check if error text is present
-      shell: grep -q 'error' "{{ filepath }}/{{ filename }}"
+      shell: grep -q '{{ errortext }}' "{{ filepath }}/{{ filename }}"
       register: grep_result
       ignore_errors: yes  
 
@@ -29,4 +29,4 @@
       command: echo run command here for jvm restart
 
 
-  #ansible-playbook ./playbooktrial/jvm_restart_playbook.yaml -e "host=localhost filepath=/home/adminuser/sampledir filename=serverlogs.log"
+  #ansible-playbook ./playbooktrial/jvm_restart_playbook.yaml -e "host=localhost filepath=/home/adminuser/sampledir filename=serverlogs.log errortext=error"
