@@ -5,7 +5,7 @@
 
   tasks:
     - name: check if specific file exist 
-
+      become: true
       find:
         paths: /home/adminuser/sampledir
         patterns: '*logs.log'
