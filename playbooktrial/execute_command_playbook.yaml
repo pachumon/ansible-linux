@@ -1,5 +1,7 @@
 ---
 - name: Execute specific command on server
+  hosts: "{{ host }}"
+  gather_facts: True
 
   tasks:  
     - name: Run a command
