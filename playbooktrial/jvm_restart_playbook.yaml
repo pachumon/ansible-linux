@@ -20,4 +20,7 @@
         dest: /home/adminuser/sampledir/serverlogs.log
         line: "error"
       check_mode: yes
-      register: presence
+      register: file_presence
+
+    - debug:       
+        var: file_presence
