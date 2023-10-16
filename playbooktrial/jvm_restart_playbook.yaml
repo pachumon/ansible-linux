@@ -7,11 +7,17 @@
     - name: check if specific file exist 
       become: true
       find:
-        paths: /home/adminuser/sampledir
+        paths: "{{ path }}"
         patterns: '*logs.log'
         recurse: no           
       register: found_files   
 
     - debug:       
         var: found_files
-        
+
+    - name: check if the file contains specific error
+      lineinfile:
+        dest: /home/adminuser/sampledir/serverlogs.log
+        line: "error"
+      check_mode: yes
+      register: presence
