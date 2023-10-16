@@ -27,3 +27,6 @@
     - name: Run a command
       when: grep_result.rc == 0
       command: echo run command here for jvm restart
+
+
+  #ansible-playbook ./playbooktrial/jvm_restart_playbook.yaml -e "host=localhost filepath=/home/adminuser/sampledir filename=serverlogs.log"
