@@ -10,10 +10,10 @@
         paths: "{{ filepath }}"
         patterns: '*logs.log'
         recurse: no           
-      register: found_files   
+      register: file_info 
 
     - debug:       
-        var: found_files
+        var: file_info  
 
     - name: Check if error text is present
       shell: grep -q 'error' "{{ filepath }}/{{ filename }}"
