@@ -1,3 +1,7 @@
+#===================================================================================#
+# this playbook checks for specific error text in log file based on the input provided
+#===================================================================================#
+
 ---
 - name: Verify if file exists and check if content is present 
   hosts: "{{ host }}"
