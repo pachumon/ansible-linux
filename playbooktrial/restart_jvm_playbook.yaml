@@ -7,10 +7,8 @@
   hosts: "{{ host }}"
 
   tasks:  
-    - name: stop the JVM server
-      when: grep_result.rc == 0
+    - name: stop the JVM server      
       command: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'stop')"
 
     - name: start the JVM server
-      when: grep_result.rc == 0
       command: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'stop')"

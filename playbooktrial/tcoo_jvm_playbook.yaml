@@ -1,19 +1,25 @@
 #===================================================================================#
 # this playbook checks for specific error text in log and based on the content
 # it stops and starts a JVM server on websphere
+# INPUT PARAMS
+# host: hot name of the execution server
+# filepath: the path to verify the specific log filepath
+# filename: the log file name to check content 
+# errortext: the exact error text to be verified in log file  
 #===================================================================================#
 ---   
 - name: Verify JVM logs and restart service
   hosts: "{{ host }}"
-  gather_facts: True
+  gather_facts: False
   become_user: oecm
 
-- name: Include a play after another play1
+- name: verify file exists and check error content
   import_playbook: verify_file_check_content_playbook.yaml
   vars:
     host: "{{ host }}"
 
-- name: Include a play after another play2
+- name: stop and start jvm server if error content exists
+  when: grep_result.rc == 0
   import_playbook: restart_jvm_playbook.yaml
   vars:
     host: "{{ host }}"
