@@ -13,9 +13,12 @@
 
     - name: Make an HTTP GET request
       uri:
-        url: "https://swapi.dev/api/people/1"
+        url: "https://kumbidiswapi.dev/api/people/1"
         method: GET
       register: response
+      until: reponse.status == 200
+      retries: 4
+      delay: 5
 
     - name: check response
       debug:
