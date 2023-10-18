@@ -12,9 +12,6 @@
       notify:
       - start_JVM_server
 
-    # - name: start the JVM server
-    #   command: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'start')"
-  
   handlers:
     - name: start_JVM_server
       command: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'start')"
