@@ -1,0 +1,13 @@
+---   
+- name: Verify JVM logs and restart service
+  hosts: "{{ host }}"
+  
+  tasks:
+    - name: Gather facts about installed packages
+      package_facts:
+        manager: auto
+
+    - name: Check if the utility is installed
+      debug:
+        msg: "The utility is installed"
+      when: "'your-utility-name' in ansible_facts.packages"
