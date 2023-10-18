@@ -23,3 +23,6 @@
   import_playbook: restart_jvm_playbook.yaml
   vars:
     host: "{{ host }}"
+
+
+#ansible-playbook ./playbooktrial/tcoo_jvm_playbook.yaml -e "host=localhost filepath=/home/adminuser/sampledir filename=serverlogs.log errortext=error"
