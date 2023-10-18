@@ -16,10 +16,7 @@
         url: "https://kumbidiswapi.dev/api/people/1"
         method: GET
       register: response
-      until: reponse.status == 200
-      retries: 4
-      delay: 5
-
+      
     - name: check response
       debug:
         var: response
