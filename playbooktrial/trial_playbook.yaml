@@ -9,5 +9,4 @@
 
     - name: Check if the utility is installed
       debug:
-        msg: "The utility is installed"
-      when: "'your-utility-name' in ansible_facts.packages"
+        var: ansible_facts.packages
