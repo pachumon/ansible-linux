@@ -13,13 +13,15 @@
       image: python
       tty: true
       interactive: true 
+      state: absent
     loop: "{{ range(1,10) }}"
 
 
   - docker_container:
      name: sleeper
      image: python
-     command: sleep infinity 
+     command: sleep infinity
+     state: absent 
 
 
   
