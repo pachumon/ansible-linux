@@ -9,13 +9,11 @@
       name: requests
 
   - docker_container:
-      name: "{{ item }}"
+      name: "c{{ item }}"
       image: python
       tty: true
       interactive: true 
-    loop:
-      - c1
-      - c2
+    loop: "{{ range(1,4) }}"
 
 
   - docker_container:
