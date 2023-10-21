@@ -1,5 +1,6 @@
 [webservers]
 c[1:3]
+sleeper
 
 [webservers:vars]
 ansible_connection=community.docker.docker
