@@ -9,7 +9,7 @@ webservers
 dbservers
 
 [dummymachines]
-pi[1-10]
+pi[1:10]
 
 [linux:vars]
 ansible_user="adminuser"
