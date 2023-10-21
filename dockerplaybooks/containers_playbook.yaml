@@ -15,4 +15,12 @@
       interactive: true 
 
 
+  - docker_container:
+     name: c1
+     image: python
+     command: sleep infinity 
+
+  
+
+
 
