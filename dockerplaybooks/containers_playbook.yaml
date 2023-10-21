@@ -9,14 +9,17 @@
       name: requests
 
   - docker_container:
-      name: c1
+      name: "{{ item }}"
       image: python
       tty: true
       interactive: true 
+    loop:
+      - c1
+      - c2
 
 
   - docker_container:
-     name: c2
+     name: sleeper
      image: python
      command: sleep infinity 
 
