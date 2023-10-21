@@ -4,6 +4,10 @@
   hosts: localhost
 
   tasks:
+
+  - pip:
+      name: requests
+
   - docker_container:
       name: c1
       image: python
