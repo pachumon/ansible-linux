@@ -16,7 +16,7 @@
 
 
   - docker_container:
-     name: c1
+     name: c2
      image: python
      command: sleep infinity 
 
