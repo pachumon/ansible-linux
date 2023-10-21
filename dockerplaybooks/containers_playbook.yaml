@@ -13,7 +13,7 @@
       image: python
       tty: true
       interactive: true 
-      state: absent 
+      state: present
     loop: "{{ range(1,10) }}"
 
 
