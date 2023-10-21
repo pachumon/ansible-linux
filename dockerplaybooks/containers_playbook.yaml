@@ -1,0 +1,11 @@
+---
+
+- name: create container to use as ansible managed nodes
+  hosts: localhost
+
+  tasks:
+  - docker_container:
+      name: c1
+      image: python
+      tty: true
+      interactive: true 
