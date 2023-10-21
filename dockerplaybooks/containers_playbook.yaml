@@ -13,7 +13,7 @@
       image: python
       tty: true
       interactive: true 
-    loop: "{{ range(1,4) }}"
+    loop: "{{ range(1,10) }}"
 
 
   - docker_container:
