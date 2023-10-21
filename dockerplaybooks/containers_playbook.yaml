@@ -13,7 +13,6 @@
       image: python
       tty: true
       interactive: true 
-      state: present
     loop: "{{ range(1,10) }}"
 
 
