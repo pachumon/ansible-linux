@@ -2,9 +2,8 @@
   hosts: all
 
   tasks:
-
     - name: copy files
       commamd: sleep 1
 
-    - name: configure website 
+    - name: configure website
       command: sleep 1
