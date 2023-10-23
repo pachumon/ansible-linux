@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  become: yes
+
+  vars:
+    username: milo
+    password: "{{ 'Pa$$w0rd1' | password_hash('sha512') }}"
+
+  tasks:
+    - name: ensure user {{ username }} exists
+      user:
+        name: "{{ username }}"
+        password: "{{ password }}"
+        update_password: on_create
