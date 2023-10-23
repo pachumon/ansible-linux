@@ -1,9 +1,0 @@
----
-- hosts: linux
-  become: true
-
-  tasks:
-    - name: install software with yum
-      yum:
-        name: "{{software_list}}"
-        state: latest

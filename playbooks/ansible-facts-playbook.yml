@@ -1,8 +1,0 @@
---- # playing around with ansible facts
-- hosts: linux
-  become: true
-
-  tasks:
-    - name: verifying the inbuild variable details
-      debug:
-        var: hostvars
