@@ -3,6 +3,7 @@
   become: yes
 
   tasks:
+    #prepare system for enterprise use
     - name: intall cli web client
       yum:
         name: elinks
