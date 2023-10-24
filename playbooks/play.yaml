@@ -1,0 +1,14 @@
+---
+- hosts: linux
+  become: yes
+
+  tasks:
+    - name: intall cli web client
+      yum:
+        name: elinks
+        state: latest
+
+    - name: install network utility
+      yum:
+        name: nmap-ncat
+        state: latest
