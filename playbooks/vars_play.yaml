@@ -1,6 +1,7 @@
 ---
 - hosts: linux
-
+  become: yes
+  
   tasks:
   - name: create working directory
     file:
