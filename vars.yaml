@@ -6,6 +6,6 @@ service_list:
   - mariadb
 
 share_paths:
-  nfs: /mnt/nfs
+  nfs: /etc/
   cifs: /mnt/cifs
   iscsi: /mnt/iscsi
