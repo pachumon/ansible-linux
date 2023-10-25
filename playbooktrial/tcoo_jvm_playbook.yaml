@@ -24,8 +24,8 @@
           - "filename: {{ (filename is defined) | ternary (filename,'not defined') }}"
           - "errortext: {{ (errortext is defined) | ternary (errortext,'not defined') }}"
           - "callbackendpoint: {{ (callbackendpoint is defined) | ternary (callbackendpoint,'not defined') }}"
-      # failed_when:
-      #   -  logfilepath == 'kumbidi'
+      failed_when:
+        -  {{ (host is defined) }}==True
       #   - "this playbook has failed"  
 
 - name: verify file exists and check error content
