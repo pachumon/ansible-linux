@@ -9,7 +9,7 @@
   tasks:  
     - name: Send HTTP request to a callback url endpoint
       uri:
-        url: ""  # Replace with your desired URL
+        url: "{{ callbackendpoint }}"  # Replace with your desired URL
         method: GET
         #body: "Your POST data here"
         status_code: 200  # Expected HTTP status code
