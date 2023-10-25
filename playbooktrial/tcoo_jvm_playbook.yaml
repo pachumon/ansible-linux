@@ -17,13 +17,13 @@
     - name: Verify user context and validate params
       debug:
         msg:
-          - "The playbook is running as user {{ ansible_env.USER }}"
+          - "The playbook is running as User : {{ ansible_env.USER }} on Host : {{ ansible_hostname }}"
           - "below are the params in the execution context"
           - "host: {{ (host is defined) | ternary (host,'not defined') }}"
-          - "host: {{ (filepath is defined) | ternary (filepath,'not defined') }}"
-          - "host: {{ (filename is defined) | ternary (filename,'not defined') }}"
-          - "host: {{ (errortext is defined) | ternary (errortext,'not defined') }}"
-          - "host: {{ (callbackendpoint is defined) | ternary (callbackendpoint,'not defined') }}"
+          - "filepath: {{ (filepath is defined) | ternary (filepath,'not defined') }}"
+          - "filename: {{ (filename is defined) | ternary (filename,'not defined') }}"
+          - "errortext: {{ (errortext is defined) | ternary (errortext,'not defined') }}"
+          - "callbackendpoint: {{ (callbackendpoint is defined) | ternary (callbackendpoint,'not defined') }}"
       # failed_when:
       #   -  logfilepath == 'kumbidi'
       #   - "this playbook has failed"  
