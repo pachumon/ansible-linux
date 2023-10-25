@@ -14,6 +14,8 @@
         #body: "Your POST data here"
         status_code: 200  # Expected HTTP status code
       register: response
+      failed_when:
+        - response.status != 200
 
     - name: Display response
       debug:
