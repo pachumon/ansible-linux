@@ -25,8 +25,8 @@
           - "errortext: {{ (errortext is defined) | ternary (errortext,'not defined') }}"
           - "callbackendpoint: {{ (callbackendpoint is defined) | ternary (callbackendpoint,'not defined') }}"
       failed_when:
-        -  "{{ (host is defined) }}==True"
-      #   - "this playbook has failed"  
+        - "{{ (host is defined) }}==True"
+        - "this playbook execution has failed as some of the inputs parameters are not defined"  
 
 - name: verify file exists and check error content
   import_playbook: verify_file_check_content_playbook.yaml
