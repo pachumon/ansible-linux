@@ -18,7 +18,7 @@
       debug:
         msg:
           - "The playbook is running as User : {{ ansible_env.USER }} on Host : {{ ansible_hostname }}"
-          - "below are the params in the execution context"
+          - "below are the params in the execution context {{ (host is defined)}}"
           - "host: {{ (host is defined) | ternary (host,'not defined') }}"
           - "filepath: {{ (filepath is defined) | ternary (filepath,'not defined') }}"
           - "filename: {{ (filename is defined) | ternary (filename,'not defined') }}"
