@@ -27,6 +27,6 @@
     - name: Display current user
       debug:
         msg:
-          - "The playbook is running as user {{ (ansible_env.USER is defined) | ternary('true','not defined') }}""
+          - "The playbook is running as user {{ (ansible_env.USER is defined) | ternary('true','not defined') }}"
           - "this is multi line comment"
           - "thisis next multi line comment"
