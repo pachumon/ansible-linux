@@ -18,10 +18,11 @@
       debug:
         msg:
           - "The playbook is running as user {{ ansible_env.USER }}"
+          #- "this is multi line comment {{ (logfilepath is defined) | ternary (logfilepath,'not provided') }}"
           - "this is next multi line comment"
-      failed_when:
-        -  logfilepath == 'kumbidi'
-        - "this playbook has failed"  
+      # failed_when:
+      #   -  logfilepath == 'kumbidi'
+      #   - "this playbook has failed"  
 
 - name: verify file exists and check error content
   import_playbook: verify_file_check_content_playbook.yaml
