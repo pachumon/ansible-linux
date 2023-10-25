@@ -2,49 +2,47 @@
 # this playbook checks for specific error text in log and based on the content
 # it stops and starts a JVM server on websphere
 # INPUT PARAMS
-# host: hot name of the execution server
-# filepath: the path to verify the specific log filepath
-# filename: the log file name to check content 
-# errortext: the exact error text to be verified in log file  
+# host_name: host name of the execution server
+# tcoo_user: the user account under which the playbook automation will execute
+# file_path: the path to verify the specific log filepath
+# file_name: the log file name to check content
+# error_text: the exact error text to be verified in log file
+# callback_endpoint: the amelia or any specific callback endpoint that needs to be invoked
 #===================================================================================#
----   
+---
 - name: Verify JVM logs and restart service
-  hosts: "{{ host }}"
+  hosts: "{{ host_name }}"
   gather_facts: true
-  become_user: oecm
+  become: true
+  become_user: "{{ tcoo_user }}"
 
   tasks:
     - name: Verify user context and validate params
       debug:
         msg:
           - "The playbook is running as User : {{ ansible_env.USER }} on Host : {{ ansible_hostname }}"
-          - "below are the params in the execution context {{ (host is defined)}}"
-          - "host: {{ (host is defined) | ternary (host,'not defined') }}"
-          - "filepath: {{ (filepath is defined) | ternary (filepath,'not defined') }}"
-          - "filename: {{ (filename is defined) | ternary (filename,'not defined') }}"
-          - "errortext: {{ (errortext is defined) | ternary (errortext,'not defined') }}"
-          - "callbackendpoint: {{ (callbackendpoint is defined) | ternary (callbackendpoint,'not defined') }}"
-      failed_when: 
-        - "host|bool or filepath|bool or filename|bool or errortext|bool or callbackendpoint|bool"
+          - "below are the params in the execution context"
+          - "host_name: {{ (host_name is defined) | ternary (host_name,'not defined') }}"
+          - "file_path: {{ (file_path is defined) | ternary (file_path,'not defined') }}"
+          - "file_name: {{ (file_name is defined) | ternary (file_name,'not defined') }}"
+          - "error_text: {{ (error_text is defined) | ternary (error_text,'not defined') }}"
+          - "callback_endpoint: {{ (callback_endpoint is defined) | ternary (callback_endpoint,'not defined') }}"
+      failed_when:
+        - "host_name|bool or file_path|bool or file_name|bool or error_text|bool or callback_endpoint|bool"
 
 - name: verify file exists and check error content
   import_playbook: verify_file_check_content_playbook.yaml
   vars:
-    host: "{{ host }}"
+    host: "{{ host_name }}"
 
 - name: stop and start jvm server if error content exists
   when: grep_result.rc == 0
   import_playbook: restart_jvm_playbook.yaml
   vars:
-    host: "{{ host }}"
+    host: "{{ host_name }}"
 
 - name: invoke a url endpoint as call back on completion of the job
   import_playbook: url_callback_playbook.yaml
   vars:
-    host: "{{ host }}"
-
-
-
-
-
+    host: "{{ host_name }}"
 #ansible-playbook ./playbooktrial/tcoo_jvm_playbook.yaml -e "host=localhost filepath=/home/adminuser/sampledir filename=serverlogs.log errortext=error"

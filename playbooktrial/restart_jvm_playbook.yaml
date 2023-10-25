@@ -1,16 +1,18 @@
 #===================================================================================#
-# this playbook stops and starts a JVM sever 
+# this playbook stops and starts a JVM sever
+# INPUT PARAMS
+# host_name: host name of the execution server
 #===================================================================================#
 
 ---
 - name: Execute specific command on server
-  hosts: "{{ host }}"
+  hosts: "{{ host_name }}"
 
-  tasks:  
-    - name: stop_JVM_server      
+  tasks:
+    - name: stop_JVM_server
       command: echo wsadmin -lang jython -c "AdminControl.invoke( AdminControl.queryNames('type=Server,*') , 'stop')"
       notify:
-      - start_JVM_server
+        - start_JVM_server
 
   handlers:
     - name: start_JVM_server

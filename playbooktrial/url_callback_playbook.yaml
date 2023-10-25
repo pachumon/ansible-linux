@@ -1,18 +1,21 @@
 #===================================================================================#
-# this playbook calls a specific url as call back from the ansible playbook 
+# this playbook calls a specific url as call back from the ansible playbook
+# INPUT PARAMS
+# host: host name of the execution server
+# callback_endpoint: the amelia or any specific callback endpoint that needs to be invoked
 #===================================================================================#
 
 ---
 - name: Execute specific command on server
-  hosts: "{{ host }}"
+  hosts: "{{ host_name }}"
 
-  tasks:  
+  tasks:
     - name: Send HTTP request to a callback url endpoint
       uri:
-        url: "{{ callbackendpoint }}"  # Replace with your desired URL
+        url: "{{ callback_endpoint }}" # Replace with your desired URL
         method: GET
         #body: "Your POST data here"
-        status_code: 200  # Expected HTTP status code
+        status_code: 200 # Expected HTTP status code
       register: response
       failed_when:
         - response.status != 200

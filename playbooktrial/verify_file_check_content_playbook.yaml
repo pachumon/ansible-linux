@@ -1,25 +1,30 @@
 #===================================================================================#
 # this playbook checks for specific error text in log file based on the input provided
+# INPUT PARAMS
+# host_name: host name of the execution server
+# file_path: the path to verify the specific log filepath
+# file_name: the log file name to check content
+# error_text: the exact error text to be verified in log file
 #===================================================================================#
 
 ---
-- name: Verify if file exists and check if content is present 
-  hosts: "{{ host }}"
-  
+- name: Verify if file exists and check if content is present
+  hosts: "{{ host_name }}"
+
   tasks:
-    - name: check if specific file exist 
+    - name: check if specific file exist
       become: true
       find:
-        paths: "{{ filepath }}"
-        patterns: '{{ filename }}'
-        recurse: no           
-      register: file_info       
+        paths: "{{ file_path }}"
+        patterns: "{{ file_name }}"
+        recurse: no
+      register: file_info
 
     - name: Check if error text is present
       when: file_info.matched
-      shell: grep -q '{{ errortext }}' "{{ filepath }}/{{ filename }}"
+      shell: grep -q '{{ error_text }}' "{{ file_path }}/{{ file_name }}"
       register: grep_result
-      ignore_errors: yes  
+      ignore_errors: yes
 
     - name: Display the result
       debug:
