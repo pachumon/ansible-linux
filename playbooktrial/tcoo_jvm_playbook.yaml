@@ -26,7 +26,7 @@
           - "callbackendpoint: {{ (callbackendpoint is defined) | ternary (callbackendpoint,'not defined') }}"
       failed_when:
         #- "{{ (callbackendpoint is defined) }}==False"
-        - "callbackendpoint|bool"
+        - "callbackendpoint|bool or errortext|bool"
         - "this playbook execution has failed as some of the inputs parameters are not defined"  
 
 - name: verify file exists and check error content
