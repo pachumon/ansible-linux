@@ -24,5 +24,13 @@
   vars:
     host: "{{ host }}"
 
+- name: invoke a url endpoint as call back on completion of the job
+  import_playbook: url_callback_playbook.yaml
+  vars:
+    host: "{{ host }}"
+
+
+
+
 
 #ansible-playbook ./playbooktrial/tcoo_jvm_playbook.yaml -e "host=localhost filepath=/home/adminuser/sampledir filename=serverlogs.log errortext=error"

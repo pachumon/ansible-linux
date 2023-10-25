@@ -1,0 +1,20 @@
+#===================================================================================#
+# this playbook calls a specific url as call back from the ansible playbook 
+#===================================================================================#
+
+---
+- name: Execute specific command on server
+  hosts: "{{ host }}"
+
+  tasks:  
+    - name: Send HTTP request to a callback url endpoint
+      uri:
+        url: ""  # Replace with your desired URL
+        method: GET
+        #body: "Your POST data here"
+        status_code: 200  # Expected HTTP status code
+      register: response
+
+    - name: Display response
+      debug:
+        var: response
