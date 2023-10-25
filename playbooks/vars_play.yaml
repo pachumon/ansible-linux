@@ -3,22 +3,26 @@
   become: yes
 
   tasks:
-  - name: create working directory
-    file:
-      name: "{{ working_dir }}"
-      state: directory
+  # - name: create working directory
+  #   file:
+  #     name: "{{ working_dir }}"
+  #     state: directory
 
-  - name: write service list
-    lineinfile:
-      path: "{{ working_dir }}/services.txt"
-      create: yes
-      line: "{{ service_list }}"
+  # - name: write service list
+  #   lineinfile:
+  #     path: "{{ working_dir }}/services.txt"
+  #     create: yes
+  #     line: "{{ service_list }}"
 
-  - name: view share property
-    command: ls -la "{{ share_paths['nfs'] }}"
-    register: cmd_output
+  # - name: view share property
+  #   command: ls -la "{{ share_paths['nfs'] }}"
+  #   register: cmd_output
 
-  - name: write command module output to file
-    copy:
-      content: "{{ cmd_output }}"
-      dest: "{{ working_dir }}/cmd_output.txt"
+  # - name: write command module output to file
+  #   copy:
+  #     content: "{{ cmd_output }}"
+  #     dest: "{{ working_dir }}/cmd_output.txt"
+
+  - name: Display current user
+    debug:
+      msg: "The playbook is running as user {{ ansible_env.USER }}"
