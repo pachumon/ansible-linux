@@ -11,15 +11,17 @@
 
   tasks:
     - name: Send HTTP request to a callback url endpoint
-      uri:
+      ansible.builtin.uri:
         url: "{{ callback_endpoint }}" # Replace with your desired URL
         method: GET
         #body: "Your POST data here"
         status_code: 200 # Expected HTTP status code
       register: response
-      failed_when:
-        - response.status != 200
+      until: "response.status == 200"
+      retries: 3
+      delay: 10
+
 
     - name: Display response
-      debug:
+      ansible.builtin.debug:
         var: response

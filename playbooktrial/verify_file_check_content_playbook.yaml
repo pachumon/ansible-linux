@@ -14,7 +14,7 @@
   tasks:
     - name: check if specific file exist
       become: true
-      find:
+      ansible.builtin.find:
         paths: "{{ file_path }}"
         patterns: "{{ file_name }}"
         recurse: no
@@ -22,13 +22,13 @@
 
     - name: Check if error text is present
       when: file_info.matched
-      shell: grep -q '{{ error_text }}' "{{ file_path }}/{{ file_name }}"
+      ansible.builtin.shell: grep -q '{{ error_text }}' "{{ file_path }}/{{ file_name }}"
       register: grep_result
       ignore_errors: yes
 
     - name: Display the result
-      debug:
+      ansible.builtin.debug:
         msg: "The line is {{ 'present' if grep_result.rc == 0 else 'not present' }} in the file"
 
-    - debug:
+    - ansible.builtin.debug:
         var: grep_result

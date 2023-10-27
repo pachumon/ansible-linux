@@ -10,12 +10,12 @@
 
   tasks:
     - name: stop_JVM_server
-      shell: echo wsadmin -lang jython -c "AdminControl.invoke( AdminControl.queryNames('type=Server,*') , 'stop')"
+      ansible.builtin.shell: echo wsadmin -lang jython -c "AdminControl.invoke( AdminControl.queryNames('type=Server,*') , 'stop')"
       notify:
         - start_JVM_server
 
     - name: Validate if the file is present
-      shell: ls -lrt /tmp/myprocess.pid
+      ansible.builtin.shell: ls -lrt /tmp/myprocess.pid
       register: lsresult
       #until: "lsresult is not failed"
       retries: 10
@@ -23,4 +23,4 @@
 
   handlers:
     - name: start_JVM_server
-      shell: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'start')"
+      ansible.builtin.shell: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'start')"

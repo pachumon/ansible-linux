@@ -20,7 +20,7 @@
 
   tasks:
     - name: Verify user context and validate params
-      debug:
+      ansible.builtin.debug:
         msg:
           - "The playbook is running as User : {{ ansible_env.USER }} on Host : {{ ansible_hostname }}"
           - "below are the params in the execution context"
@@ -45,5 +45,5 @@
 - name: invoke a url endpoint as call back on completion of the job
   when: callback_enabled|bool
   import_playbook: url_callback_playbook.yaml
-  
-#ansible-playbook ./playbooktrial/tcoo_jvm_playbook.yaml -e "host_name=localhost tcoo_user=adminuser file_path=/home/adminuser/sampledir file_name=serverlogs.log error_text=error callback_endpoint=https://swapi.dev/api/people/1"
+
+#ansible-playbook ./playbooktrial/tcoo_jvm_playbook.yaml -e "host_name=localhost tcoo_user=adminuser file_path=/home/adminuser/sampledir file_name=serverlogs.log error_text=error callback_endpoint=https://swapi.dev/api/people/1 callback_enabled=False jvm_restart_enabled=False"
