@@ -19,7 +19,7 @@
         body: 
           aoTaskId: "{{ao_task_id}}"
           callback_state: "{{ callback_state }}"
-          payload:"{{ callback_payload|to_json }}"
+          payload: "{{ callback_payload|to_json }}"
         body_format: json
         status_code: 200 # need to confirm if it is 200 or 201
         headers:
