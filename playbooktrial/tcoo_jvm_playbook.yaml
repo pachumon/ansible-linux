@@ -41,7 +41,7 @@
   import_playbook: verify_file_check_content_playbook.yaml
 
 - name: stop and start jvm server if error content exists
-  when: grep_result.rc == 0 and jvm_restart_enabled|bool
+  when: grep_result.rc == 0 or jvm_restart_enabled|bool
   import_playbook: restart_jvm_playbook.yaml
 
 - name: invoke a url endpoint as call back on completion of the job
