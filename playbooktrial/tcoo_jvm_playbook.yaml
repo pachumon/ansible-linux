@@ -10,6 +10,7 @@
 # callback_enabled: this determines if the uri callback playbook is executed
 # callback_endpoint: the amelia or any specific callback endpoint that needs to be invoked
 # jvm_restart_enabled: this determines if the restart playbook is executed
+# file_verification_enabled: this determines if the file verification playbook is executed
 #===================================================================================#
 ---
 - name: Verify JVM logs and restart service
@@ -36,6 +37,7 @@
           or callback_endpoint|bool or tcoo_user|bool"
 
 - name: verify file exists and check error content
+  when: file_verification_enabled|bool
   import_playbook: verify_file_check_content_playbook.yaml
 
 - name: stop and start jvm server if error content exists

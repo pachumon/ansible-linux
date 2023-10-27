@@ -33,6 +33,6 @@
     - ansible.builtin.debug:
         var: grep_result
 
-- name: invoke a url endpoint as call back on completion of the job
-  when: callback_enabled|bool
-  import_playbook: url_callback_playbook.yaml
+# - name: invoke a url endpoint as call back on completion of the job
+#   when: callback_enabled|bool
+#   import_playbook: url_callback_playbook.yaml
