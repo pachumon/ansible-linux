@@ -7,8 +7,9 @@
 # file_path: the path to verify the specific log filepath
 # file_name: the log file name to check content
 # error_text: the exact error text to be verified in log file
-# callback_enabled: this defines if the callback invocation is enabled
+# callback_enabled: this determines if the uri callback playbook is executed
 # callback_endpoint: the amelia or any specific callback endpoint that needs to be invoked
+# jvm_restart_enabled: this determines if the restart playbook is executed
 #===================================================================================#
 ---
 - name: Verify JVM logs and restart service
@@ -27,7 +28,9 @@
           - "file_path: {{ (file_path is defined) | ternary (file_path,'not defined') }}"
           - "file_name: {{ (file_name is defined) | ternary (file_name,'not defined') }}"
           - "error_text: {{ (error_text is defined) | ternary (error_text,'not defined') }}"
+          - "callback_enabled: {{ (callback_enabled is defined) | ternary (callback_enabled,'not defined') }}"
           - "callback_endpoint: {{ (callback_endpoint is defined) | ternary (callback_endpoint,'not defined') }}"
+          - "jvm_restart_enabled: {{ (jvm_restart_enabled is defined) | ternary (jvm_restart_enabled,'not defined') }}"
       failed_when:
         - "host_name|bool or file_path|bool or file_name|bool or error_text|bool 
           or callback_endpoint|bool or tcoo_user|bool"
@@ -36,10 +39,11 @@
   import_playbook: verify_file_check_content_playbook.yaml
 
 - name: stop and start jvm server if error content exists
-  when: grep_result.rc == 0
+  when: grep_result.rc == 0 and jvm_restart_enabled|bool
   import_playbook: restart_jvm_playbook.yaml
 
 - name: invoke a url endpoint as call back on completion of the job
   when: callback_enabled|bool
   import_playbook: url_callback_playbook.yaml
+  
 #ansible-playbook ./playbooktrial/tcoo_jvm_playbook.yaml -e "host_name=localhost tcoo_user=adminuser file_path=/home/adminuser/sampledir file_name=serverlogs.log error_text=error callback_endpoint=https://swapi.dev/api/people/1"
