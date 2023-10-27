@@ -10,10 +10,17 @@
 
   tasks:
     - name: stop_JVM_server
-      command: echo wsadmin -lang jython -c "AdminControl.invoke( AdminControl.queryNames('type=Server,*') , 'stop')"
+      shell: echo wsadmin -lang jython -c "AdminControl.invoke( AdminControl.queryNames('type=Server,*') , 'stop')"
       notify:
         - start_JVM_server
 
+    - name: Validate if the file is present
+      shell: ls -lrt /tmp/myprocess.pid
+      register: lsresult
+      until: "lsresult is not failed"
+      retries: 10
+      delay: 20
+
   handlers:
     - name: start_JVM_server
-      command: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'start')"
+      shell: echo wsadmin -lang jython -c "AdminControl.invoke(AdminControl.queryNames('type=Server,*'), 'start')"

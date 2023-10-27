@@ -29,7 +29,7 @@
           - "error_text: {{ (error_text is defined) | ternary (error_text,'not defined') }}"
           - "callback_endpoint: {{ (callback_endpoint is defined) | ternary (callback_endpoint,'not defined') }}"
       failed_when:
-        - "host_name|bool or file_path|bool or file_name|bool or error_text|bool
+        - "host_name|bool or file_path|bool or file_name|bool or error_text|bool 
           or callback_endpoint|bool or tcoo_user|bool"
 
 - name: verify file exists and check error content
