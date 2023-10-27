@@ -14,12 +14,12 @@
       notify:
         - start_JVM_server
 
-    - name: Validate if the file is present
-      ansible.builtin.shell: ls -lrt /tmp/myprocess.pid
-      register: lsresult
-      #until: "lsresult is not failed"
-      retries: 10
-      delay: 20
+    # - name: Validate if the file is present
+    #   ansible.builtin.shell: ls -lrt /tmp/myprocess.pid
+    #   register: lsresult
+    #   #until: "lsresult is not failed"
+    #   retries: 10
+    #   delay: 20
 
   handlers:
     - name: start_JVM_server
