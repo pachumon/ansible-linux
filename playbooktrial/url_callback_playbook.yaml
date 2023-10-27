@@ -17,7 +17,7 @@
         #body: "Your POST data here"
         status_code: 200 # Expected HTTP status code
       register: response
-      until: "response.status == 200"
+      until: "response.status == 201"
       retries: 3
       delay: 10
 
