@@ -13,9 +13,9 @@
     #     state: latest 
 
     - name: Display current user
-        debug:
-          msg:
-            - " {{ hostvars }}"
+      debug:
+        msg:
+          - " {{ hostvars }}"
 
     - name: install softwares with yum
       yum:
