@@ -6,7 +6,7 @@
     #prepare system for enterprise use
     - name: intall cli web client
       yum:
-        name: elinks
+        name: httpd
         state: latest
 
     - name: install network utility
