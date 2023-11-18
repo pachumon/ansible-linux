@@ -4,12 +4,21 @@
 
   tasks:
     #prepare system for enterprise use
-    - name: intall cli web client
+    # - name: intall cli web client
+    #   yum:
+    #     name: 
+    #       - httpd
+    #       - nmap-ncat
+    #     state: latest 
+
+    - name: install softwares with yum
       yum:
-        name: 
-          - httpd
-          - nmap-ncat
+        name: "{{ item }}"
         state: latest
+      loop: 
+        - git
+        - python3-pip
+        - httpd
 
     # - name: install network utility
     #   yum:
