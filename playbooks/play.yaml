@@ -6,10 +6,12 @@
     #prepare system for enterprise use
     - name: intall cli web client
       yum:
-        name: httpd
+        name: 
+          - httpd
+          - nmap-ncat
         state: latest
 
-    - name: install network utility
-      yum:
-        name: nmap-ncat
-        state: latest
+    # - name: install network utility
+    #   yum:
+    #     name: nmap-ncat
+    #     state: latest
