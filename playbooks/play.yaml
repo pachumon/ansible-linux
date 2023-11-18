@@ -1,6 +1,7 @@
 ---
 - hosts: linux
   become: yes
+  gather_facts: true
 
   tasks:
     #prepare system for enterprise use
@@ -11,6 +12,11 @@
     #       - nmap-ncat
     #     state: latest 
 
+    - name: Display current user
+        debug:
+          msg:
+            - " {{ hostvars }}"
+
     - name: install softwares with yum
       yum:
         name: "{{ item }}"
@@ -20,7 +26,4 @@
         - python3-pip
         - httpd
 
-    # - name: install network utility
-    #   yum:
-    #     name: nmap-ncat
-    #     state: latest
+ 
