@@ -1,14 +1,14 @@
 --- # example for delegate task
 - hosts: linux
-  serial: 1
+  #serial: 1
   become: true
   tasks:
     - name: install software 
       yum:
         name: git
-        state: present
+        state: absent
       delegate_to: 10.0.0.6
     - name: install software
       yum:
         name: httpd
-        state: present
+        state: absent
