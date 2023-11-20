@@ -1,0 +1,16 @@
+---   
+- name: Verify JVM logs and restart service
+  hosts: linux
+
+
+  tasks:
+    - name: check if specific file exist
+      become: true
+      ansible.builtin.find:
+        paths: "{{ file_path }}"
+        patterns: "{{ file_name }}"
+        recurse: no
+      register: file_info
+
+    - ansible.builtin.debug:
+        var: file_info 
