@@ -26,6 +26,7 @@
 
     - ansible.builtin.debug:
         var: file_info
+      when: grep_result.rc== '0'
 
     - ansible.builtin.debug:
         msg: >
@@ -52,3 +53,13 @@
 
     - ansible.builtin.debug:
         var: pids_info
+
+
+    - name: Check multi line script
+      shell: |
+        echo "{{ file_info }}" | grep -q "'matched':\ 0"
+        echo "{{ file_info }}" | grep -q "'matched':\ 0"
+      register: grep_result
+      ignore_errors: yes
+
+  
