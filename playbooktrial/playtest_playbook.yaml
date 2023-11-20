@@ -57,9 +57,11 @@
 
     - name: Check multi line script
       shell: |
-        echo "{{ file_info }}" | grep -q "'matched':\ 0"
-        echo "{{ file_info }}" | grep -q "'matched':\ 0"
-      register: grep_result
+          $PID= "275"
+          if [[ -z "$PID"]] then
+          kill -3 PID
+          fi
+      register: pid_result
       ignore_errors: yes
 
   
