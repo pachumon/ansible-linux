@@ -15,9 +15,10 @@
         - heapdump*
         - javacore*
 
-    - name: Check if error text is present      
-      shell: grep -q matched {{file_info}}"
+    - name: Check if error text is present
+      shell: echo "{{ file_info }}" | grep -q "'matched':\ 1"
       register: grep_result
+      ignore_errors: yes
 
     - name: Display the result
       ansible.builtin.debug:
