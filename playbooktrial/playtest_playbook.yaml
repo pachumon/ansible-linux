@@ -26,12 +26,12 @@
             {% endif %}
           {% endfor %}
 
-    - name: "check command"
-      shell: echo hello
-      register: var
-      until: var.stdout.find('hi') != -1
-      retries: 5
-      delay: 10
+    # - name: "check command"
+    #   shell: echo hello
+    #   register: var
+    #   until: var.stdout.find('hi') != -1
+    #   retries: 5
+    #   delay: 10
 
 
     - name: Getting process IDs of the process
