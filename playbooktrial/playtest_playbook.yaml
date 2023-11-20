@@ -43,14 +43,17 @@
     #   retries: 5
     #   delay: 10
 
-    - ansible.builtin.debug:
-        var: file_info
+    # - ansible.builtin.debug:
+    #     var: file_info
 
     - name: Check multi line script
       shell: |
-        echo "{{ file_info }}" | grep -q "'matched':\ 0"            
+        ps -elf | grep -v grep | grep sleep | awk '{print $4}'            
       register: pid_result
       with_sequence: count=3
+
+    - ansible.builtin.debug:
+        var: pid_result
      
 
   
