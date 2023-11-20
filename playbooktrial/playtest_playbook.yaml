@@ -19,6 +19,6 @@
         var: file_info
 
     - ansible.builtin.debug:
-        msg: "{{ [result for result in file_info.results if result.matched == '1'] }}"
+        msg: "{% [result for result in file_info.results if result.matched == '1'] %}"
     # - ansible.builtin.debug:
     #     msg: "{{ any( result.matched == '1' for result in file_info.results) }}"
