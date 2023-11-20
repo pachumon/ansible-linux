@@ -9,7 +9,7 @@
         paths: "{{ file_path }}"
         patterns: "{{ item }}"
         recurse: no
-        age: 60m
+        age: -5m
       register: file_info
       with_items:
         - heapdump*
