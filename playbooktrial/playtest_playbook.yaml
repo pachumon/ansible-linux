@@ -25,9 +25,14 @@
               {% print('kumbidi') %}
             {% endif %}
           {% endfor %}
-          {% file_info = 'kokachi'%}
 
-    - debug:
-        var: {{ file_info }}
+    - name: "check command"
+      shell: echo hello
+      register: var
+      until: var.stdout.find('hi') != -1
+      retries: 5
+      delay: 10
+
+
 
           
