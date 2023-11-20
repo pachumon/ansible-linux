@@ -28,6 +28,6 @@
           {% file_info = 'kokachi'%}
 
     - debug:
-        var: file_info
+        var: {{ file_info }}
 
           
