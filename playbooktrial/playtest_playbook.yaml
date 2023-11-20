@@ -21,7 +21,7 @@
     - ansible.builtin.debug:
         msg: >
           {% for result in file_info.results %}
-           print(result)
+           print({{ result }})
           {% endfor %}
     # - ansible.builtin.debug:
     #     msg: "{{ any( result.matched == '1' for result in file_info.results) }}"
