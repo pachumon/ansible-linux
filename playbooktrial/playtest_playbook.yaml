@@ -18,8 +18,7 @@
    - name: Check if error text is present      
      shell: grep -q matched {{file_info}}"
      register: grep_result
-     ignore_errors: yes
-
+     
     - name: Display the result
       ansible.builtin.debug:
         msg: "{{ grep_result }}"
