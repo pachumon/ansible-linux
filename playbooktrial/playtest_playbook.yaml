@@ -36,7 +36,7 @@
 
     - name: Getting process IDs of the process
       community.general.pids:
-      name: sleep
+        name: sleep
       register: pids_of_python
 
 
