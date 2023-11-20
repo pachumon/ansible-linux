@@ -15,10 +15,10 @@
         - heapdump*
         - javacore*
 
-   - name: Check if error text is present      
-     shell: grep -q matched {{file_info}}"
-     register: grep_result
-     
+    - name: Check if error text is present      
+      shell: grep -q matched {{file_info}}"
+      register: grep_result
+
     - name: Display the result
       ansible.builtin.debug:
         msg: "{{ grep_result }}"
