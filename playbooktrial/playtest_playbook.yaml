@@ -8,9 +8,12 @@
       become: true
       ansible.builtin.find:
         paths: "{{ file_path }}"
-        patterns: "{{ file_name }}"
+        patterns: "{{ item }}"
         recurse: no
       register: file_info
+      with_items:
+        - heapdump*
+        - javacore*
 
     - ansible.builtin.debug:
         var: file_info 
