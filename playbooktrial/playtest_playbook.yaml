@@ -37,7 +37,10 @@
     - name: Getting process IDs of the process
       community.general.pids:
         name: sleep
-      register: pids_of_python
+      register: pids_info
+
+    - ansible.builtin.debug:
+        var: pids_info
 
 
 
