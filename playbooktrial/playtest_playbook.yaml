@@ -16,4 +16,4 @@
         - javacore*
 
     - ansible.builtin.debug:
-        var: {{ file_info.results | length }}
+        msg: "{{ file_info.results | length }}"
