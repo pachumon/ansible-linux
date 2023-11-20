@@ -16,4 +16,4 @@
         - javacore*
 
     - ansible.builtin.debug:
-        msg: "{{ any( result.matched == "1" for result in file_info.results) }}"
+        msg: "{{ any( result.matched == '1' for result in file_info.results) }}"
