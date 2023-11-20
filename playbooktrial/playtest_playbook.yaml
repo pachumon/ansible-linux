@@ -33,6 +33,8 @@
     #   retries: 5
     #   delay: 10
 
+    - ansible.builtin.debug:
+        var: file_info
 
     - name: Getting process IDs of the process
       community.general.pids:
