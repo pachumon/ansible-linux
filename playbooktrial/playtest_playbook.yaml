@@ -1,6 +1,6 @@
 ---   
 - name: Verify JVM logs and restart service
-  hosts: linux
+  hosts: localhost
 
 
   tasks:
