@@ -46,22 +46,11 @@
     - ansible.builtin.debug:
         var: file_info
 
-    - name: Getting process IDs of the process
-      community.general.pids:
-        name: sleep
-      register: pids_info
-
-    - ansible.builtin.debug:
-        var: pids_info
-
-
     - name: Check multi line script
       shell: |
-          $PID= "275"
-          if [[ -z "$PID"]] then
-          kill -3 PID
-          fi
+        echo "{{ file_info }}" | grep -q "'matched':\ 0"            
       register: pid_result
-      ignore_errors: yes
+      with_sequence: count=3
+     
 
   
