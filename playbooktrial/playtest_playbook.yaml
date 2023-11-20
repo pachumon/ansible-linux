@@ -1,7 +1,6 @@
----   
+---
 - name: Verify JVM logs and restart service
   hosts: localhost
-
 
   tasks:
     - name: check if specific file exist
@@ -10,6 +9,7 @@
         paths: "{{ file_path }}"
         patterns: "{{ item }}"
         recurse: no
+        age: 60m
       register: file_info
       with_items:
         - heapdump*
@@ -43,7 +43,3 @@
 
     - ansible.builtin.debug:
         var: pids_info
-
-
-
-          
