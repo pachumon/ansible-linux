@@ -14,9 +14,10 @@
 
     - name: check async
       shell: |
-        sleep 4
-      async: 5
+        sleep 10
+      # async: 5
       # poll: 1
+      timeout: 5
       register: async_check
 
     - name: print async details
