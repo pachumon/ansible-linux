@@ -14,9 +14,7 @@
 
     - name: check async
       shell: |
-        date
-        time
-        hostname
+        sleep 10
       async: 3
       poll: 1
       register: async_check
