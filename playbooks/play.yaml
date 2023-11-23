@@ -16,7 +16,7 @@
       shell: |
         sleep 4
       async: 5
-      poll: 1
+      # poll: 1
       register: async_check
 
     - name: print async details
