@@ -12,18 +12,16 @@
     #       - nmap-ncat
     #     state: latest 
 
-    - name: Display current user
+    - name:check async
+      shell: |
+        date
+        time
+        hostname
+      async: 3
+      poll: 1
+      register: async_check
+
+    - name: print async details
       debug:
-        msg:
-          - " {{ hostvars }}"
-
-    - name: install softwares with yum
-      yum:
-        name: "{{ item }}"
-        state: latest
-      loop: 
-        - git
-        - python3-pip
-        - httpd
-
+        msg: async_check
  
