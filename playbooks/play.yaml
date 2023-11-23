@@ -21,4 +21,4 @@
 
     - name: print async details
       debug:
-        msg: async_check
+        msg: "{{ async_check }}"
