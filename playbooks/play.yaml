@@ -7,12 +7,12 @@
     #prepare system for enterprise use
     # - name: intall cli web client
     #   yum:
-    #     name: 
+    #     name:
     #       - httpd
     #       - nmap-ncat
-    #     state: latest 
+    #     state: latest
 
-    - name:check async
+    - name: check async
       shell: |
         date
         time
@@ -24,4 +24,3 @@
     - name: print async details
       debug:
         msg: async_check
- 
